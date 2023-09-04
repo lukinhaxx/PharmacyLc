@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">PharmacyLc</string>
+    <string name="entrar">Entrar</string>
+    <string name="senha">Senha</string>
+    <string name="cadastre_se">cadastre-se</string>
+    <string name="n_o_possui_uma_conta">Não Possui Uma Conta?</string>
+    <string name="email">Email</string>
+    <string name="entrar_button_login">Entrar</string>
+    <string name="entrar_cadastro">Entrar</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="text_cadastre_se">Cadastre-se</string>
+    <string name="j_possui_uma_conta">Já Possui Uma Conta?</string>
+    <string name="Primeira_senha">Senha</string>
+    <string name="segunda_senha">Senha</string>
+    <string name="nome">Nome</string>
+    <string name="primeira_senha">Senha</string>
+    <string name="campo_email">Email</string>
+    <string name="confirmar_senha">Confirmar senha</string>
+
+    <string name="first_slide">Choose Your Products</string>
+    <string name="second_slide">Fast Delivery</string>
+    <string name="third_slide">Good Service</string>
+
+    <string name="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industrys standard dummy text ever since the</string>
+    <string name="todo">TODO</string>
+</resources>
