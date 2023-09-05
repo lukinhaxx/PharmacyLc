@@ -17,15 +17,17 @@
         android:contentDescription="@string/todo" />
 
     <TextView
-        android:layout_height="wrap_content"
+        android:id="@+id/heading"
         android:layout_width="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" android:id="@+id/heading"
-        app:layout_constraintTop_toBottomOf="@+id/slider_img"
-        android:textStyle="bold" android:textSize="25sp"
-        android:textAlignment="center"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alata"
         android:text="@string/first_slide"
-        android:fontFamily="@font/arimo"/>
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slider_img" />
 
     <TextView
         android:layout_height="wrap_content"

@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+
 public class CadastroActivity extends AppCompatActivity {
 
     EditText nome, email, senha, senhaa;
