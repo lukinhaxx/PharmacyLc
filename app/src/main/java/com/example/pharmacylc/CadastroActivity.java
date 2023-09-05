@@ -1,6 +1,7 @@
 package com.example.pharmacylc;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -18,6 +19,7 @@ public class CadastroActivity extends AppCompatActivity {
     EditText nome, email, senha, senhaa;
     private FirebaseAuth auth;
 
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +39,20 @@ public class CadastroActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         senha = findViewById(R.id.senha);
         senhaa = findViewById(R.id.senhaa);
+
+        sharedPreferences = getSharedPreferences("Tela de Boas Vindas", MODE_PRIVATE);
+
+        boolean isFirstTime = sharedPreferences.getBoolean("firstTime", true);
+
+        if(isFirstTime){
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("firstTime", false);
+            editor.commit();
+
+            Intent intent = new Intent(CadastroActivity.this,TelaDeBoasVindas.class);
+            startActivity(intent);
+            finish();
+        }
 
     }
 
@@ -70,7 +86,7 @@ public class CadastroActivity extends AppCompatActivity {
         }
 
         if(userSenhaa.length() < 8){
-            Toast.makeText(this, "senha pequena, enter minímo 8 characters", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "senha pequena, no minímo 8 characters", Toast.LENGTH_SHORT).show();
             return;
         }
         if (!userSenha.equals(userSenhaa)) {
@@ -79,10 +95,10 @@ public class CadastroActivity extends AppCompatActivity {
         } else {
             auth.createUserWithEmailAndPassword(userEmail, userSenha).addOnCompleteListener(CadastroActivity.this, task -> {
                 if (task.isSuccessful()) {
-                    Toast.makeText(CadastroActivity.this, "Successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CadastroActivity.this, "Successo a Cadastrar", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(CadastroActivity.this, MainActivity.class));
                 } else {
-                    Toast.makeText(CadastroActivity.this, "Registration Failed" + task.getException(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CadastroActivity.this, "Cadastro Falhou" + task.getException(), Toast.LENGTH_SHORT).show();
                 }
             });
         }

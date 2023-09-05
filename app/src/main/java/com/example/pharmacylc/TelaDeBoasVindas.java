@@ -1,15 +1,19 @@
 package com.example.pharmacylc;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
+import android.widget.Button;
 
 public class TelaDeBoasVindas extends AppCompatActivity {
 
@@ -22,12 +26,13 @@ public class TelaDeBoasVindas extends AppCompatActivity {
 
     TextView[] dots;
 
+    Animation animation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_tela_de_boas_vindas);
-
 
 
         ActionBar supportActionBar = getSupportActionBar();
@@ -39,14 +44,22 @@ public class TelaDeBoasVindas extends AppCompatActivity {
         dotsLayout = findViewById(R.id.dots);
 
         btn = findViewById(R.id.get_started_btn);
+
         addDots(0);
 
         viewPager.addOnPageChangeListener(changeListener);
 
 
         //call Adapter
-        TelaAdaptativa TelaAdaptativa = new TelaAdaptativa(this);
+        telaAdaptativa = new TelaAdaptativa(this);
         viewPager.setAdapter(telaAdaptativa);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(TelaDeBoasVindas.this, CadastroActivity.class));
+                finish();
+            }
+        });
 
     }
     private void addDots(int position){
@@ -54,7 +67,7 @@ public class TelaDeBoasVindas extends AppCompatActivity {
         dotsLayout.removeAllViews();
         for(int i = 0; i < dots.length; i++){
             dots[i] = new TextView(this);
-            dots[i].setText(Html.fromHtml("&#8226"));
+            dots[i].setText(Html.fromHtml("&#8226;"));
             dots[i].setTextSize(35);
             dotsLayout.addView(dots[i]);
         }
@@ -73,15 +86,16 @@ public class TelaDeBoasVindas extends AppCompatActivity {
 
             addDots(position);
 
-            if(position == 0) {
+            if (position == 0) {
                 btn.setVisibility(View.INVISIBLE);
-            } else if (position == 1) {
+            } else if(position == 1){
                 btn.setVisibility(View.INVISIBLE);
             }else{
-
                 btn.setVisibility(View.VISIBLE);
-
+                animation = AnimationUtils.loadAnimation(TelaDeBoasVindas.this, R.anim.slide_animation);
+                btn.setAnimation(animation);
             }
+
         }
 
         @Override

@@ -17,11 +17,11 @@
     <string name="campo_email">Email</string>
     <string name="confirmar_senha">Confirmar senha</string>
 
-    <string name="first_slide">Choose Your Products</string>
-    <string name="second_slide">Fast Delivery</string>
-    <string name="third_slide">Good Service</string>
+    <string name="first_slide">Escolha Seus Produtos</string>
+    <string name="second_slide">Entrega Rápida</string>
+    <string name="third_slide">Bom Atendimento</string>
 
-    <string name="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industrys standard dummy text ever since the</string>
+    <string name="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
     <string name="todo">TODO</string>
     <string name="lets_get_started">Lets get started</string>
     <string name="vamos_come_ar">Vamos Começar</string>

@@ -38,7 +38,6 @@ public class TelaAdaptativa extends PagerAdapter {
             R.string.description
     };
 
-
     @Override
     public int getCount() {
         return headingArray.length;
@@ -46,13 +45,12 @@ public class TelaAdaptativa extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return view == (ConstraintLayout) object ;
+        return view == object;
     }
 
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-
 
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.layout_deslizante,container,false);
@@ -61,7 +59,6 @@ public class TelaAdaptativa extends PagerAdapter {
         TextView heading = view.findViewById(R.id.heading);
         TextView description = view.findViewById(R.id.description);
 
-
         imageView.setImageResource(imagesArray[position]);
         heading.setText(headingArray[position]);
         description.setText(descriptionArray[position]);
@@ -69,9 +66,7 @@ public class TelaAdaptativa extends PagerAdapter {
         container.addView(view);
 
         return view;
-
     }
-
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         container.removeView((ConstraintLayout)object);
