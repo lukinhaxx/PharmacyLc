@@ -1,4 +1,4 @@
-package com.example.pharmacylc;
+package com.example.pharmacylc.activies;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.pharmacylc.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 
@@ -49,7 +50,7 @@ public class CadastroActivity extends AppCompatActivity {
             editor.putBoolean("firstTime", false);
             editor.commit();
 
-            Intent intent = new Intent(CadastroActivity.this,TelaDeBoasVindas.class);
+            Intent intent = new Intent(CadastroActivity.this, TelaDeBoasVindas.class);
             startActivity(intent);
             finish();
         }
@@ -105,7 +106,7 @@ public class CadastroActivity extends AppCompatActivity {
     }
 
     public void entrar(View view) {
-        startActivity(new Intent(CadastroActivity.this,LoginActivity.class));
+        startActivity(new Intent(CadastroActivity.this, LoginActivity.class));
 
     }
 }

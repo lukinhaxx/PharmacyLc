@@ -1,4 +1,4 @@
-package com.example.pharmacylc;
+package com.example.pharmacylc.activies;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,9 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 import android.widget.Button;
+
+import com.example.pharmacylc.R;
+import com.example.pharmacylc.adapters.TelaAdaptativa;
 
 public class TelaDeBoasVindas extends AppCompatActivity {
 

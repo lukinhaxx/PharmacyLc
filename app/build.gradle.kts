@@ -5,12 +5,13 @@ plugins {
 
 android {
     namespace = "com.example.pharmacylc"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.pharmacylc"
         minSdk = 21
-        targetSdk = 33
+        //noinspection EditedTargetSdkVersion
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -42,4 +43,7 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    //slider image
+    implementation ("com.github.denzcoskun:ImageSlideshow:0.1.2")
 }

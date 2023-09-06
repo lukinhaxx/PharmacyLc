@@ -1,4 +1,4 @@
-package com.example.pharmacylc;
+package com.example.pharmacylc.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewpager.widget.PagerAdapter;
+
+import com.example.pharmacylc.R;
 
 public class TelaAdaptativa extends PagerAdapter {
 
