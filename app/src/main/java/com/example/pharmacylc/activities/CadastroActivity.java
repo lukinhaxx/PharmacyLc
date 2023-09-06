@@ -106,7 +106,7 @@ public class CadastroActivity extends AppCompatActivity {
     }
 
     public void entrar(View view) {
-        startActivity(new Intent(CadastroActivity.this, LoginActivity.class));
+        startActivity(new Intent(CadastroActivity.this,LoginActivity.class));
 
     }
 }
