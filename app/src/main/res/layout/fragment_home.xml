@@ -47,7 +47,7 @@
                 android:fontFamily="@font/alata"
                 android:gravity="end"
                 android:text="@string/ver_todos"
-                android:textColor="#E040FB"
+                android:textColor="@color/textHeading"
                 android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -154,7 +154,7 @@
                     android:layout_marginEnd="8dp"
                     android:fontFamily="@font/alata"
                     android:text="@string/ver_todos3"
-                    android:textColor="#E040FB"
+                    android:textColor="@color/textHeading"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     tools:ignore="RelativeOverlap" />

@@ -15,9 +15,11 @@
         android:theme="@style/Theme.PharmacyLc"
         tools:targetApi="31">
         <activity
+            android:name=".activities.ShowAllActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.DetalheActivity"
             android:exported="false" />
-
         <activity
             android:name=".activities.TelaDeBoasVindas"
             android:exported="false" />

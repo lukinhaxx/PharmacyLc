@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.example.pharmacylc.R;
 import com.example.pharmacylc.models.NewProductsModel;
 import com.example.pharmacylc.models.PopularProductsModel;
+import com.example.pharmacylc.models.ShowAllModel;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class DetalheActivity extends AppCompatActivity {
@@ -23,6 +24,8 @@ public class DetalheActivity extends AppCompatActivity {
 
     NewProductsModel newProductsModel = null;
     PopularProductsModel popularProductsModel = null;
+
+    ShowAllModel showAllModel = null;
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,8 @@ public class DetalheActivity extends AppCompatActivity {
             newProductsModel = (NewProductsModel) obj;
         }else if(obj instanceof PopularProductsModel){
             popularProductsModel = (PopularProductsModel) obj;
+        }else if(obj instanceof ShowAllModel){
+           showAllModel = (ShowAllModel) obj;
         }
 
         detailedImg = findViewById(R.id.detalhe_img);
@@ -71,8 +76,16 @@ public class DetalheActivity extends AppCompatActivity {
             description.setText(popularProductsModel.getDescription());
             price.setText(String.valueOf(popularProductsModel.getPrice()));
             name.setText(popularProductsModel.getName());
+        }
 
+        if(showAllModel != null){
 
+            Glide.with(getApplicationContext()).load(showAllModel.getImg_url()).into(detailedImg);
+            name.setText(showAllModel.getName());
+            rating.setText(showAllModel.getRating());
+            description.setText(showAllModel.getDescription());
+            price.setText(String.valueOf(showAllModel.getPrice()));
+            name.setText(showAllModel.getName());
         }
     }
 }
