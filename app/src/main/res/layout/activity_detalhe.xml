@@ -14,7 +14,8 @@
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
     <androidx.cardview.widget.CardView
         android:translationY="-50dp"
@@ -24,7 +25,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:elevation="10dp"
-        app:carCornerRadius="10dp"
+        app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detalhe_img">
@@ -40,16 +41,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:fontfamily="@font/alata"
+
                     android:id="@+id/detalhe_nome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Produto"
                     android:textColor="@color/black"
                     android:textSize="25sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    />
                 <TextView
-                    android:fontfamily="@font/alata"
+                    android:id="@+id/rating"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="4.0"
@@ -67,17 +70,17 @@
                     android:numStars="5"
                     android:stepSize="0.1"
                     style="?android:attr/ratingBarStyleSmall"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    tools:ignore="RtlHardcoded" />
 
             </RelativeLayout>
             <TextView
-                android:fontfamily="@font/alata"
                 android:id="@+id/detalhe_desc"
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-                />
+                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -87,8 +90,7 @@
                 android:layout_marginTop="10dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:fontfamily="@font/alata"
-                />
+                 />
 
             <LinearLayout android:layout_height="wrap_content"
                 android:layout_width="match_parent"
@@ -100,16 +102,19 @@
                     android:layout_width="wrap_content"
                     android:text="R$"
                     android:textStyle="bold"
-                    android:fontFamily="@font/alata"
-                    android:textColor="@color/purple_700"/>
+
+                    android:textColor="@color/purple_700"
+                     />
 
                 <TextView
+                    android:id="@+id/detalhe_price"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="20"
                     android:textStyle="bold"
-                    android:fontFamily="@font/alata"
-                    android:textColor="@color/purple_700"/>
+
+                    android:textColor="@color/purple_700"
+                    />
 
 
             </LinearLayout>
@@ -120,25 +125,30 @@
                 android:gravity="center_horizontal"
                 android:layout_margin="10dp"
                 >
+
                 <ImageView
-                    android:layout_maringRight="7dp"
+                    android:id="@+id/add_item"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:layout_marginRight="7dp"
+                    android:contentDescription="TODO"
                     android:src="@drawable/plusicon"
-                    android:id="@+id/add_item"/>
+                    tools:ignore="ContentDescription,HardcodedText,ImageContrastCheck" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1"
                     android:textSize="30sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
 
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/iconminus"
-                    android:id="@+id/remove_item"/>
+                    android:id="@+id/remove_item"
+                    tools:ignore="ContentDescription" />
 
 
             </LinearLayout>
@@ -156,6 +166,7 @@
         android:padding="14dp"
         android:text="Adicionar ao Carrinho"
         android:textAllCaps="false"
+        android:textColor="#0D47A1"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -163,7 +174,7 @@
         app:layout_constraintTop_toBottomOf="@+id/carview"
         app:layout_constraintVertical_bias="0.685"
         app:layout_constraintWidth_percent=".8"
-        tools:ignore="UnusedAttribute" />
+        tools:ignore="HardcodedText,RtlHardcoded,UnusedAttribute" />
 
     <Button
         android:id="@+id/buy_now"
@@ -176,11 +187,13 @@
         android:padding="14dp"
         android:text="Compre agora"
         android:textAllCaps="false"
+        android:textColor="#546E7A"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent=".8" />
+        app:layout_constraintWidth_percent=".8"
+        tools:ignore="HardcodedText,RtlHardcoded,UnusedAttribute" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

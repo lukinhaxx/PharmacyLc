@@ -1,6 +1,8 @@
 package com.example.pharmacylc.models;
 
-public class NewProductsModel {
+import java.io.Serializable;
+
+public class NewProductsModel implements Serializable {
     String description;
     String name;
     String rating;
