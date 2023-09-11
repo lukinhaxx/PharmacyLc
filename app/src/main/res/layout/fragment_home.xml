@@ -25,7 +25,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="9dp"
+            android:layout_marginStart="9dp"
             android:orientation="horizontal"
             android:weightSum="2">
 
@@ -33,8 +33,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/amethysta"
-                android:text="Category"
+                android:fontFamily="@font/alata"
+                android:text="@string/categorias"
                 android:textSize="21sp"
                 android:textStyle="bold" />
 
@@ -42,22 +42,21 @@
                 android:id="@+id/category_see_all"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:fontFamily="@font/amethysta"
+                android:fontFamily="@font/alata"
                 android:gravity="end"
-                android:text="See All"
-                android:textColor="@color/pink"
+                android:text="@string/ver_todos"
+                android:textColor="#E040FB"
                 android:textSize="18sp"
                 android:textStyle="bold" />
-
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rec_category"
             android:layout_width="wrap_content"
             android:layout_height="90dp"
-            android:layout_marginLeft="9dp"
+            android:layout_marginStart="9dp"
             android:layout_marginTop="10dp" />
 
         <androidx.cardview.widget.CardView
@@ -82,9 +81,9 @@
                         android:id="@+id/new_product_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="9dp"
-                        android:fontFamily="@font/amethysta"
-                        android:text="New Products"
+                        android:layout_marginStart="9dp"
+                        android:fontFamily="@font/alata"
+                        android:text="@string/novos_produtos"
                         android:textSize="21sp"
                         android:textStyle="bold" />
 
@@ -92,20 +91,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/new_product_name"
-                        android:layout_marginLeft="9dp"
-                        android:text="We provide best products." />
+                        android:layout_marginStart="9dp"
+                        android:text="@string/fornecemos_os_melhores_produtos" />
 
                     <TextView
                         android:id="@+id/newProducts_see_all"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginRight="8dp"
-                        android:fontFamily="@font/amethysta"
-                        android:text="See All"
-                        android:textColor="@color/pink"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/alata"
+                        android:text="@string/ver_todos2"
+                        android:textColor="@color/textHeading"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="RelativeOverlap" />
                 </RelativeLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -132,30 +132,32 @@
                     android:id="@+id/popular_products"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="9dp"
-                    android:fontFamily="@font/amethysta"
-                    android:text="Popular Products"
+                    android:layout_marginStart="9dp"
+                    android:fontFamily="@font/alata"
+                    android:text="@string/produtos_populares"
                     android:textSize="21sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:ignore="RelativeOverlap" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/popular_products"
-                    android:layout_marginLeft="9dp"
-                    android:text="We provide best products." />
+                    android:layout_marginStart="9dp"
+                    android:text="@string/fornecemos_os_melhores_produtos2" />
 
                 <TextView
                     android:id="@+id/popular_see_all"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginRight="8dp"
-                    android:fontFamily="@font/amethysta"
-                    android:text="See All"
-                    android:textColor="@color/pink"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/alata"
+                    android:text="@string/ver_todos3"
+                    android:textColor="#E040FB"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:ignore="RelativeOverlap" />
             </RelativeLayout>
 
             <androidx.recyclerview.widget.RecyclerView

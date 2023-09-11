@@ -29,4 +29,27 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="todo_categoria_list">TODO</string>
     <string name="category_name">Category Name</string>
+    <string name="category">Category</string>
+    <string name="we_provide_best_products">We provide best products.</string>
+    <string name="see_all">See All</string>
+    <string name="see_all1">See All</string>
+    <string name="popular_products">Popular Products</string>
+    <string name="provide_best_products">We provide best products.</string>
+    <string name="new_products">New Products</string>
+    <string name="see_all2">See All</string>
+    <string name="categorias">categorias</string>
+    <string name="fornecemos_os_melhores_produtos">fornecemos os melhores produtos</string>
+    <string name="fornecemos_os_melhores_produtos2">fornecemos os melhores produtos</string>
+    <string name="ver_todos">Ver todos</string>
+    <string name="ver_todos2">Ver todos</string>
+    <string name="novos_produtos">Novos Produtos</string>
+    <string name="produtos_populares">Produtos populares</string>
+    <string name="ver_todos3">Ver todos</string>
+    <string name="pre_o">preço: $</string>
+    <string name="todoo">TODO</string>
+    <string name="_90">90</string>
+    <string name="product_name">Product Name</string>
+    <string name="novo">Novo</string>
+    <string name="preco">Preço</string>
+    <string name="produto">produto</string>
 </resources>

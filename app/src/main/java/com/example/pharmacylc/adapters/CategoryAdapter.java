@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.pharmacylc.R;
 import com.example.pharmacylc.models.CategoryModel;
 
@@ -17,8 +18,9 @@ import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
 
-    private Context context;
-    private List<CategoryModel> list;
+
+    private final Context context;
+      private final List<CategoryModel> list;
 
     public CategoryAdapter(Context context, List<CategoryModel> list) {
         this.context = context;
@@ -27,13 +29,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
     @NonNull
     @Override
-    public CategoryAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.categoria_list,parent,false));
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.categoria_list, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryAdapter.ViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+             Glide.with(context).load(list.get(position).getImg_url()).into(holder.catImg);
+             holder.catName.setText(list.get(position).getName());
     }
 
     @Override
@@ -42,9 +45,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView catImg;
+        TextView catName;
 
-            ImageView catImg;
-            TextView catName;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -52,4 +55,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             catName = itemView.findViewById(R.id.cat_name);
         }
     }
+
 }
+
+
+
+
+
