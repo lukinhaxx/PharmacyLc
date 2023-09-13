@@ -2,6 +2,7 @@ package com.example.pharmacylc.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -33,6 +34,7 @@ public class DetalheActivity extends AppCompatActivity {
     Button addtoCart, buyNow;
     ImageView addItems,removeItems;
 
+    Toolbar toolbar;
     int totalQuantiy = 1;
     int totalPrice = 0;
 
@@ -53,6 +55,11 @@ public class DetalheActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalhe);
 
+        toolbar =findViewById(R.id.detailed_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
 
@@ -63,7 +70,7 @@ public class DetalheActivity extends AppCompatActivity {
         }else if(obj instanceof PopularProductsModel){
             popularProductsModel = (PopularProductsModel) obj;
         }else if(obj instanceof ShowAllModel){
-           showAllModel = (ShowAllModel) obj;
+            showAllModel = (ShowAllModel) obj;
         }
 
         detailedImg = findViewById(R.id.detalhe_img);
@@ -89,6 +96,8 @@ public class DetalheActivity extends AppCompatActivity {
             price.setText(String.valueOf(newProductsModel.getPrice()));
             name.setText(newProductsModel.getName());
 
+            totalPrice = newProductsModel.getPrice() * totalQuantiy;
+
         }
         if(popularProductsModel != null){
 
@@ -98,6 +107,9 @@ public class DetalheActivity extends AppCompatActivity {
             description.setText(popularProductsModel.getDescription());
             price.setText(String.valueOf(popularProductsModel.getPrice()));
             name.setText(popularProductsModel.getName());
+
+            totalPrice = popularProductsModel.getPrice() * totalQuantiy;
+
         }
 
         if(showAllModel != null){
@@ -108,6 +120,9 @@ public class DetalheActivity extends AppCompatActivity {
             description.setText(showAllModel.getDescription());
             price.setText(String.valueOf(showAllModel.getPrice()));
             name.setText(showAllModel.getName());
+
+            totalPrice = showAllModel.getPrice() * totalQuantiy;
+
         }
 
         addItems.setOnClickListener(new View.OnClickListener() {
@@ -117,6 +132,15 @@ public class DetalheActivity extends AppCompatActivity {
                 if(totalQuantiy < 10){
                     totalQuantiy++;
                     quantity.setText(String.valueOf(totalQuantiy));
+                    if(newProductsModel != null){
+                        totalPrice = newProductsModel.getPrice() * totalQuantiy;
+                    }
+                    if(popularProductsModel != null){
+                        totalPrice = popularProductsModel.getPrice() * totalQuantiy;
+                    }if(showAllModel != null){
+                        totalPrice = showAllModel.getPrice() * totalQuantiy;
+
+                    }
                 }
 
             }
@@ -159,6 +183,10 @@ public class DetalheActivity extends AppCompatActivity {
                 cartMap.put("productPrice", price.getText().toString());
                 cartMap.put("currentTime", saveCurrentTime);
                 cartMap.put("currentDate", saveCurrentDate);
+                cartMap.put("totalQuantity", quantity.getText().toString());
+                cartMap.put("totalPrice", totalPrice);
+
+
 
                 firestore.collection("addToCart").document(auth.getCurrentUser().getUid())
                         .collection("User").add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {

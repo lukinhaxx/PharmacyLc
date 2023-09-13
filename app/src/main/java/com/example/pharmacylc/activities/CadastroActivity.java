@@ -26,10 +26,10 @@ public class CadastroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
-        ActionBar supportActionBar = getSupportActionBar();
-        if (supportActionBar != null) {
-            supportActionBar.hide();
-        }
+       //ActionBar supportActionBar = getSupportActionBar();
+        //if (supportActionBar != null) {
+          //supportActionBar.hide();
+        //}
         auth = FirebaseAuth.getInstance();
 
         if(auth.getCurrentUser() != null){

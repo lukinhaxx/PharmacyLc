@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activities.DetalheActivity">
 
+
     <ImageView
         android:id="@+id/detalhe_img"
         android:layout_width="match_parent"
@@ -16,6 +17,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/detailed_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Detalhes" />
 
     <androidx.cardview.widget.CardView
         android:translationY="-50dp"
@@ -195,6 +206,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintWidth_percent=".8"
         tools:ignore="HardcodedText,RtlHardcoded,UnusedAttribute" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
