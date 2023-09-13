@@ -49,7 +49,7 @@
                     android:textColor="@color/black"
                     android:textSize="25sp"
                     android:textStyle="bold"
-                    />
+                    tools:ignore="HardcodedText" />
                 <TextView
                     android:id="@+id/rating"
 
@@ -60,7 +60,7 @@
                     android:layout_toStartOf="@+id/my_rating"
                     android:textSize="16sp"
                     android:layout_marginTop="8dp"
-                    />
+                    tools:ignore="HardcodedText" />
                 <RatingBar
                     android:id="@+id/my_rating"
                     android:layout_width="wrap_content"
@@ -80,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-                 />
+                tools:ignore="HardcodedText" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
                 android:layout_marginTop="10dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                 />
+                tools:ignore="HardcodedText" />
 
             <LinearLayout android:layout_height="wrap_content"
                 android:layout_width="match_parent"
@@ -104,7 +104,7 @@
                     android:textStyle="bold"
 
                     android:textColor="@color/purple_700"
-                     />
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/detalhe_price"
@@ -114,7 +114,7 @@
                     android:textStyle="bold"
 
                     android:textColor="@color/purple_700"
-                    />
+                    tools:ignore="HardcodedText" />
 
 
             </LinearLayout>
@@ -133,9 +133,10 @@
                     android:layout_marginRight="7dp"
                     android:contentDescription="TODO"
                     android:src="@drawable/plusicon"
-                    tools:ignore="ContentDescription,HardcodedText,ImageContrastCheck" />
+                    tools:ignore="ContentDescription,HardcodedText,ImageContrastCheck,RtlHardcoded" />
 
                 <TextView
+                    android:id="@+id/quantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1"
@@ -158,7 +159,7 @@
 
     <Button
         android:id="@+id/add_to_cart"
-        android:layout_width="0dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/pink"
         android:drawableLeft="@drawable/mycart"
@@ -178,7 +179,7 @@
 
     <Button
         android:id="@+id/buy_now"
-        android:layout_width="0dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/teal_200"
