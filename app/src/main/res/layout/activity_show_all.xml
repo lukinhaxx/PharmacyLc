@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Meu Carrinho"
+        app:title="Todos os Items"
         android:background="#3E4FA6"
         android:minHeight="?attr/actionBarTheme"
         android:theme="?attr/actionBarTheme"
