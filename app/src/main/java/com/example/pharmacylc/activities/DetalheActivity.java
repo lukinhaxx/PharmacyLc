@@ -1,9 +1,5 @@
 package com.example.pharmacylc.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +7,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.example.pharmacylc.R;
@@ -33,7 +34,6 @@ public class DetalheActivity extends AppCompatActivity {
     TextView rating, name, description, price, quantity;
     Button addtoCart, buyNow;
     ImageView addItems,removeItems;
-
     Toolbar toolbar;
     int totalQuantiy = 1;
     int totalPrice = 0;
@@ -44,7 +44,7 @@ public class DetalheActivity extends AppCompatActivity {
     ShowAllModel showAllModel = null;
 
     FirebaseAuth auth;
-    private FirebaseFirestore firestore;
+    FirebaseFirestore firestore;
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
@@ -55,12 +55,14 @@ public class DetalheActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalhe);
 
-        toolbar =findViewById(R.id.detailed_toolbar);
+        toolbar = findViewById(R.id.detailed_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
-
-        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        firestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
 
         final Object obj = getIntent().getSerializableExtra("detalhes");
@@ -83,7 +85,6 @@ public class DetalheActivity extends AppCompatActivity {
 
         addtoCart = findViewById(R.id.add_to_cart);
         buyNow = findViewById(R.id.buy_now);
-
         addItems = findViewById(R.id.add_item);
         removeItems = findViewById(R.id.remove_item);
 
@@ -125,34 +126,29 @@ public class DetalheActivity extends AppCompatActivity {
 
         }
 
-        addItems.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        addItems.setOnClickListener(view -> {
 
-                if(totalQuantiy < 10){
-                    totalQuantiy++;
-                    quantity.setText(String.valueOf(totalQuantiy));
-                    if(newProductsModel != null){
-                        totalPrice = newProductsModel.getPrice() * totalQuantiy;
-                    }
-                    if(popularProductsModel != null){
-                        totalPrice = popularProductsModel.getPrice() * totalQuantiy;
-                    }if(showAllModel != null){
-                        totalPrice = showAllModel.getPrice() * totalQuantiy;
-
-                    }
+            if(totalQuantiy < 10){
+                totalQuantiy++;
+                quantity.setText(String.valueOf(totalQuantiy));
+                if(newProductsModel != null){
+                    totalPrice = newProductsModel.getPrice() * totalQuantiy;
                 }
-
+                if(popularProductsModel != null){
+                    totalPrice = popularProductsModel.getPrice() * totalQuantiy;
+                }if(showAllModel != null){
+                    totalPrice = showAllModel.getPrice() * totalQuantiy;
+                    totalPrice = showAllModel.getPrice() * totalQuantiy;
+                }
             }
-        });
-        removeItems.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                if(totalQuantiy > 1){
-                    totalQuantiy--;
-                    quantity.setText(String.valueOf(totalQuantiy));
-                }
+        });
+        removeItems.setOnClickListener(view -> {
+
+            if(totalQuantiy > 1){
+                totalQuantiy--;
+                quantity.setText(String.valueOf(totalQuantiy));
+                totalPrice = showAllModel.getPrice() * totalQuantiy;
             }
         });
 
@@ -171,7 +167,7 @@ public class DetalheActivity extends AppCompatActivity {
                 String saveCurrentTime, saveCurrentDate;
                 Calendar calForDate = Calendar.getInstance();
 
-                @SuppressLint({"NewApi", "LocalSuppress"}) SimpleDateFormat currentDate = new SimpleDateFormat("MM dd, YYYY");
+                SimpleDateFormat currentDate = new SimpleDateFormat("MM dd, yyyy");
                 saveCurrentDate = currentDate.format(calForDate.getTime());
 
                 SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
@@ -187,16 +183,17 @@ public class DetalheActivity extends AppCompatActivity {
                 cartMap.put("totalPrice", totalPrice);
 
 
-
-                firestore.collection("addToCart").document(auth.getCurrentUser().getUid())
-                        .collection("User").add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                firestore.collection("AddToCart").document(auth.getCurrentUser().getUid())
+                        .collection("CurrentUser").add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                             @Override
                             public void onComplete(@NonNull Task<DocumentReference> task) {
-                                Toast.makeText(DetalheActivity.this, "Adicionado no carrinho", Toast.LENGTH_LONG).show();
+                                Toast.makeText(DetalheActivity.this, "Added To A Cart", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         });
+
             }
+
         });
     }
 }

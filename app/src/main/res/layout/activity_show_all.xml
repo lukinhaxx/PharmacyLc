@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:title="Todos os Items"
         android:background="#3E4FA6"
-        android:minHeight="?attr/actionBarTheme"
+        android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         />
 

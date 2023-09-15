@@ -2,9 +2,10 @@ package com.example.pharmacylc.models;
 
 public class MyCartModel {
 
+
     String currentTime;
     String currentDate;
-    String productNameproductPrice;
+    String productName;
     String productPrice;
     String totalQuantity;
     int totalPrice;
@@ -12,10 +13,10 @@ public class MyCartModel {
     public MyCartModel() {
     }
 
-    public MyCartModel(String currentTime, String currentDate, String productNameproductPrice, String productPrice, String totalQuantity, int totalPrice) {
+    public MyCartModel(String currentTime, String currentDate, String productName, String productPrice, String totalQuantity, int totalPrice) {
         this.currentTime = currentTime;
         this.currentDate = currentDate;
-        this.productNameproductPrice = productNameproductPrice;
+        this.productName = productName;
         this.productPrice = productPrice;
         this.totalQuantity = totalQuantity;
         this.totalPrice = totalPrice;
@@ -37,12 +38,12 @@ public class MyCartModel {
         this.currentDate = currentDate;
     }
 
-    public String getProductNameproductPrice() {
-        return productNameproductPrice;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setProductNameproductPrice(String productNameproductPrice) {
-        this.productNameproductPrice = productNameproductPrice;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public String getProductPrice() {

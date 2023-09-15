@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.cardview.widget.CardView  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="5dp"
     android:elevation="4dp"
     android:layout_margin="5dp">
-
     <LinearLayout
         android:padding="7dp"
         android:background="#FB9FDE"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,7 +25,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/alata"
                 android:text="Current Date: "
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -34,7 +34,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/alata"
                 android:text="Current Date: "
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -51,7 +50,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/alata"
                 android:text="Current Time: "
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -61,7 +59,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/alata"
                 android:text="Current Time: "
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -78,7 +75,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/alata"
                 android:text="Product Name: "
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -88,7 +84,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/alata"
                 android:text="Current Date: "
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -105,7 +100,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/alata"
                 android:text="Product Price: "
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -115,7 +109,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/alata"
                 android:text="Current Date: "
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -132,7 +125,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/alata"
                 android:text="Total Price "
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -142,7 +134,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/alata"
                 android:text="Total price "
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -159,7 +150,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/alata"
                 android:text="Total Quantity "
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -169,7 +159,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/alata"
                 android:text="Total Quantity"
                 android:textSize="16sp"
                 android:textStyle="bold" />
