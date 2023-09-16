@@ -2,12 +2,14 @@ package com.example.pharmacylc.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pharmacylc.R;
@@ -17,8 +19,9 @@ import java.util.List;
 
 public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder> {
 
-    private final Context context;
-    private final List<MyCartModel> list;
+     Context context;
+     List<MyCartModel> list;
+     int totalAmount = 0;
 
 
     public MyCartAdapter(Context context, List<MyCartModel> list) {
@@ -35,12 +38,19 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+
         holder.name.setText(list.get(position).getProductName());
-        holder.price.setText(list.get(position).getProductPrice()+"R$");
+        holder.price.setText("R$ " + list.get(position).getProductPrice());
         holder.date.setText(list.get(position).getCurrentDate());
         holder.time.setText(list.get(position).getCurrentTime());
         holder.totalPrice.setText(String.valueOf(list.get(position).getTotalPrice()));
         holder.totalQuantity.setText(list.get(position).getTotalQuantity());
+
+        totalAmount = totalAmount + list.get(position).getTotalPrice();
+        Intent intent = new Intent("MyTotalAmount");
+        intent.putExtra("totalAmount", totalAmount);
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+
     }
 
     @Override
@@ -49,7 +59,6 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-
         TextView name, price, date, time, totalQuantity, totalPrice;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -59,7 +68,6 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
             time = itemView.findViewById(R.id.current_time);
             totalQuantity = itemView.findViewById(R.id.total_quantity);
             totalPrice = itemView.findViewById(R.id.total_price);
-
         }
     }
 }

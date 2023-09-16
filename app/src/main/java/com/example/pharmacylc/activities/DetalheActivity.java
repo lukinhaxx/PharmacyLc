@@ -1,6 +1,7 @@
 package com.example.pharmacylc.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -125,7 +126,12 @@ public class DetalheActivity extends AppCompatActivity {
             totalPrice = showAllModel.getPrice() * totalQuantiy;
 
         }
-
+        buyNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(DetalheActivity.this,AddressActivity.class));
+            }
+        });
         addItems.setOnClickListener(view -> {
 
             if(totalQuantiy < 10){
@@ -187,7 +193,7 @@ public class DetalheActivity extends AppCompatActivity {
                         .collection("CurrentUser").add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                             @Override
                             public void onComplete(@NonNull Task<DocumentReference> task) {
-                                Toast.makeText(DetalheActivity.this, "Added To A Cart", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(DetalheActivity.this, "Adicionado no Carrinho", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         });
