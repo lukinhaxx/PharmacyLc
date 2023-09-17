@@ -15,6 +15,9 @@
         android:theme="@style/Theme.PharmacyLc"
         tools:targetApi="31">
         <activity
+            android:name=".activities.PagamentoActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.AddAddressActivity"
             android:exported="false" />
         <activity
