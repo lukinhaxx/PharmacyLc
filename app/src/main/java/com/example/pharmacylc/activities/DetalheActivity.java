@@ -63,6 +63,13 @@ public class DetalheActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         firestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
 
@@ -129,7 +136,18 @@ public class DetalheActivity extends AppCompatActivity {
         buyNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(DetalheActivity.this,AddressActivity.class));
+                Intent intent = new Intent(DetalheActivity.this, AddressActivity.class);
+               if(newProductsModel != null){
+                   intent.putExtra("item", newProductsModel);
+
+               }
+               if(popularProductsModel != null){
+                   intent.putExtra("item", popularProductsModel);
+               }
+                if(showAllModel != null){
+                    intent.putExtra("item",showAllModel);
+                }
+                startActivity(intent);
             }
         });
         addItems.setOnClickListener(view -> {

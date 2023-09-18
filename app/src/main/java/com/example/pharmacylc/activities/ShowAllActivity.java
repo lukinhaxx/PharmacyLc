@@ -4,6 +4,7 @@ import static com.example.pharmacylc.R.id;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,6 +41,13 @@ public class ShowAllActivity extends AppCompatActivity {
         toolbar =findViewById(R.id.show_all_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         String type = getIntent().getStringExtra("type");
 

@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -34,6 +36,7 @@ public class CarrinhoActivity extends AppCompatActivity {
     int overAllTotalAmount;
     TextView overAllAmount;
     Toolbar toolbar;
+    Button buynow;
     RecyclerView recyclerView;
     List<MyCartModel> cartModelList;
     MyCartAdapter cartAdapter;
@@ -51,6 +54,28 @@ public class CarrinhoActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.my_cart_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        buynow = findViewById(R.id.buy_now);
+
+        buynow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CarrinhoActivity.this, AddressActivity.class);
+
+                // Iniciar a AddressActivity
+                startActivity(intent);
+
+                // Finalizar a CarrinhoActivity (para que ela não fique na pilha de atividades)
+                finish();
+            }
+        });
+
 
         LocalBroadcastManager.getInstance(this)
                 .registerReceiver(mMessageReceiver, new IntentFilter("MyTotalAmount"));

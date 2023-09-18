@@ -14,6 +14,9 @@ import android.widget.Button;
 import com.example.pharmacylc.R;
 import com.example.pharmacylc.adapters.AddressAdapter;
 import com.example.pharmacylc.models.AddressModel;
+import com.example.pharmacylc.models.NewProductsModel;
+import com.example.pharmacylc.models.PopularProductsModel;
+import com.example.pharmacylc.models.ShowAllModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -46,6 +49,15 @@ public class AddressActivity extends AppCompatActivity implements  AddressAdapte
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        Object obj = getIntent().getSerializableExtra("item");
+
         firestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
 
@@ -75,7 +87,23 @@ public class AddressActivity extends AppCompatActivity implements  AddressAdapte
         paymentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(AddressActivity.this,PagamentoActivity.class));
+
+                double amount = 0.0;
+                if(obj instanceof NewProductsModel){
+                    NewProductsModel newProductsModel = (NewProductsModel) obj;
+                    amount = newProductsModel.getPrice();
+                }
+                if(obj instanceof PopularProductsModel){
+                    PopularProductsModel popularProductsModel = (PopularProductsModel) obj;
+                    amount = popularProductsModel.getPrice();
+                }
+                if(obj instanceof ShowAllModel){
+                    ShowAllModel showAllModel = (ShowAllModel) obj;
+                    amount = showAllModel.getPrice();
+                }
+                Intent intent = new Intent(AddressActivity.this,PagamentoActivity.class);
+                intent.putExtra("amount", amount);
+                startActivity(intent);
             }
         });
 
