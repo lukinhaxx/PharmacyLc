@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         homeFragment = new HomeFragment();
         perfilFragment = new PerfilFragment();
 
-        bottomNavigationView.setOnItemSelectedListener(item -> {
+        bottomNavigationView.setOnItemSelectedListener((MenuItem item) -> {
             int itemId = item.getItemId();
             if (itemId == R.id.home) {
                 loadFragment(homeFragment);
