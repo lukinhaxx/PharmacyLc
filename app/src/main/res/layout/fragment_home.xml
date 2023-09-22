@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:drawableLeft="@drawable/baseline_search_24"
-            android:drwablePadding="5dp"
+            android:drawablePadding="5dp"
             android:elevation="3dp"
             android:hint="Pesquisa"
             android:minHeight="48dp"
