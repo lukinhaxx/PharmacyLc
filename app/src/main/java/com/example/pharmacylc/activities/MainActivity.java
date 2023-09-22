@@ -5,23 +5,27 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import androidx.appcompat.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.pharmacylc.R;
 import com.example.pharmacylc.fragments.HomeFragment;
+import com.example.pharmacylc.fragments.PerfilFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
-
     Fragment homeFragment;
+    Fragment perfilFragment; // Novo fragmento para o perfil
     FirebaseAuth auth;
     Toolbar toolbar;
+    BottomNavigationView bottomNavigationView;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -35,23 +39,38 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24);
 
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         homeFragment = new HomeFragment();
+        perfilFragment = new PerfilFragment(); // Instancie o PerfilFragment
+
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId = item.getItemId(); // Obtenha o ID do item selecionado
+                if (itemId == R.id.home) {
+                    loadFragment(homeFragment); // Carregue o HomeFragment
+                    return true;
+                } else if (itemId == R.id.perfil) {
+                    loadFragment(perfilFragment); // Carregue o PerfilFragment
+                    return true;
+                }
+                return false;
+            }
+        });
+
         loadFragment(homeFragment);
     }
 
-
-
-
-    private void loadFragment(Fragment homeFragment) {
+    private void loadFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.home_container,homeFragment);
+        transaction.replace(R.id.home_container, fragment);
         transaction.commit();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu,menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 
@@ -59,15 +78,28 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.menu_logout){
-
+        if (id == R.id.menu_logout) {
             auth.signOut();
-            startActivity(new Intent(MainActivity.this,CadastroActivity.class));
+            startActivity(new Intent(MainActivity.this, CadastroActivity.class));
             finish();
-
         } else if (id == R.id.menu_my_cart) {
-            startActivity(new Intent(MainActivity.this,CarrinhoActivity.class));
+            startActivity(new Intent(MainActivity.this, CarrinhoActivity.class));
         }
         return true;
     }
 }
+
+// @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        int id = item.getItemId();
+//
+//        if (id == R.id.menu_logout) {
+//            auth.signOut();
+//            startActivity(new Intent(MainActivity.this, CadastroActivity.class));
+//            finish();
+//        } else if (id == R.id.menu_my_cart) {
+//            startActivity(new Intent(MainActivity.this, CarrinhoActivity.class));
+//        }
+//        return true;
+//    }
+//}

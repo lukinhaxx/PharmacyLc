@@ -5,13 +5,15 @@ plugins {
 
 android {
     namespace = "com.example.pharmacylc"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.pharmacylc"
-        minSdk = 21
+        minSdk = 24
+        //noinspection EditedTargetSdkVersion
+        targetSdk = 34
         //noinspection OldTargetApi
-        targetSdk = 33
+        //noinspection OldTargetApi
         versionCode = 1
         versionName = "1.0"
 
@@ -34,15 +36,28 @@ android {
 }
 
 
+
+
 dependencies {
 
+
+    constraints {
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
+            because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
+        }
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0") {
+            because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
+        }
+    }
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("com.google.firebase:firebase-auth-ktx:22.1.1")
-    implementation("com.google.firebase:firebase-auth:22.1.1")
-    implementation("com.google.firebase:firebase-firestore-ktx:24.7.1")
-    implementation("com.google.firebase:firebase-firestore:24.7.1")
+    implementation("com.google.firebase:firebase-auth-ktx:22.1.2")
+    implementation("com.google.firebase:firebase-auth:22.1.2")
+    implementation("com.google.firebase:firebase-firestore-ktx:24.8.1")
+    implementation("com.google.firebase:firebase-firestore:24.8.1")
+    implementation("androidx.navigation:navigation-fragment:2.7.2")
+    implementation("androidx.navigation:navigation-ui:2.7.2")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -50,8 +65,8 @@ dependencies {
     //slider image
     implementation("com.github.bumptech.glide:glide:4.16.0")
     //Glide
-    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
     //Razor payment
-    implementation ("com.razorpay:checkout:1.6.33")
+    implementation ("com.razorpay:checkout:1.6.34")
 
 }
