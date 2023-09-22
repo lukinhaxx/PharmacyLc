@@ -4,12 +4,12 @@
     <item
         android:id="@+id/home"
         android:enabled="true"
-        android:title="Home"
-        android:icon="@drawable/baseline_home_work_24"/>
+        android:title="@string/home"
+        android:icon="@drawable/baseline_home_24"/>
     <item
         android:id="@+id/perfil"
         android:enabled="true"
-        android:title="Perfil"
+        android:title="@string/perfil"
         android:icon="@drawable/ic_baseline_person_24"/>
 
 

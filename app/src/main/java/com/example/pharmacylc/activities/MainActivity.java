@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainActivity extends AppCompatActivity {
 
     Fragment homeFragment;
-    Fragment perfilFragment; // Novo fragmento para o perfil
+    Fragment perfilFragment;
     FirebaseAuth auth;
     Toolbar toolbar;
     BottomNavigationView bottomNavigationView;
@@ -42,21 +42,18 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         homeFragment = new HomeFragment();
-        perfilFragment = new PerfilFragment(); // Instancie o PerfilFragment
+        perfilFragment = new PerfilFragment();
 
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int itemId = item.getItemId(); // Obtenha o ID do item selecionado
-                if (itemId == R.id.home) {
-                    loadFragment(homeFragment); // Carregue o HomeFragment
-                    return true;
-                } else if (itemId == R.id.perfil) {
-                    loadFragment(perfilFragment); // Carregue o PerfilFragment
-                    return true;
-                }
-                return false;
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.home) {
+                loadFragment(homeFragment);
+                return true;
+            } else if (itemId == R.id.perfil) {
+                loadFragment(perfilFragment);
+                return true;
             }
+            return false;
         });
 
         loadFragment(homeFragment);
@@ -89,17 +86,4 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-// @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        int id = item.getItemId();
-//
-//        if (id == R.id.menu_logout) {
-//            auth.signOut();
-//            startActivity(new Intent(MainActivity.this, CadastroActivity.class));
-//            finish();
-//        } else if (id == R.id.menu_my_cart) {
-//            startActivity(new Intent(MainActivity.this, CarrinhoActivity.class));
-//        }
-//        return true;
-//    }
-//}
+

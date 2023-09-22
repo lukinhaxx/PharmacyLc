@@ -52,4 +52,6 @@
     <string name="novo">Novo</string>
     <string name="preco">Preço</string>
     <string name="produto">produto</string>
+    <string name="home">Home</string>
+    <string name="perfil">Perfil</string>
 </resources>
