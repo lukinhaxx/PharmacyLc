@@ -59,9 +59,11 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore:24.8.1")
     implementation("androidx.navigation:navigation-fragment:2.7.2")
     implementation("androidx.navigation:navigation-ui:2.7.2")
+    implementation("com.google.firebase:firebase-messaging-ktx:23.2.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
     implementation("com.github.denzcoskun:ImageSlideshow:0.1.2")
     //slider image
     implementation("com.github.bumptech.glide:glide:4.16.0")
@@ -70,6 +72,6 @@ dependencies {
 
 
    implementation("com.paypal.sdk:paypal-android-sdk:2.16.0")
-    //implementation("com.paypal.checkout:android-sdk:0.112.2")
+
 
 }

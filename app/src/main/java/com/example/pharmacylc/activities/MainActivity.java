@@ -15,9 +15,11 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.pharmacylc.R;
 import com.example.pharmacylc.fragments.HomeFragment;
 import com.example.pharmacylc.fragments.PerfilFragment;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -84,6 +86,23 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
+
+
+    void getFCMToken() {
+        FirebaseMessaging.getInstance().subscribeToTopic("web_app")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = "Done";
+                        if (!task.isSuccessful()) {
+                            msg = "Failed";
+                        }
+
+                    }
+                });
+    }
+
+
 }
 
 
