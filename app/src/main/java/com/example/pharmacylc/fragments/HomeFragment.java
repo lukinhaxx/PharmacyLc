@@ -21,8 +21,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.denzcoskun.imageslider.ImageSlider;
-import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.pharmacylc.R;
 import com.example.pharmacylc.activities.ShowAllActivity;
@@ -44,9 +42,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class HomeFragment extends Fragment {
-
 
     TextView catShowAll, popularShowAll, newProductShowAll;
     LinearLayout linearLayout;
@@ -67,6 +63,64 @@ public class HomeFragment extends Fragment {
     private List<ShowAllModel> showAllModelList;
     private RecyclerView recyclerViewSearch;
     private ShowAllAdapter showAllAdapter;
+
+
+    class TreeNode {
+        String name;
+        ShowAllModel data;
+        TreeNode left;
+        TreeNode right;
+
+        public TreeNode(String name, ShowAllModel data) {
+            this.name = name;
+            this.data = data;
+            this.left = null;
+            this.right = null;
+        }
+    }
+
+    class BinarySearchTree {
+        private TreeNode root;
+
+        public BinarySearchTree() {
+            root = null;
+        }
+
+        public void insert(String name, ShowAllModel data) {
+            root = insertRec(root, name, data);
+        }
+
+        private TreeNode insertRec(TreeNode root, String name, ShowAllModel data) {
+            if (root == null) {
+                root = new TreeNode(name, data);
+                return root;
+            }
+
+            if (name.compareTo(root.name) < 0) {
+                root.left = insertRec(root.left, name, data);
+            } else if (name.compareTo(root.name) > 0) {
+                root.right = insertRec(root.right, name, data);
+            }
+
+            return root;
+        }
+
+        public ShowAllModel search(String name) {
+            return searchRec(root, name);
+        }
+
+        private ShowAllModel searchRec(TreeNode root, String name) {
+            if (root == null || root.name.equals(name)) {
+                return (root != null) ? root.data : null;
+            }
+
+            if (name.compareTo(root.name) < 0) {
+                return searchRec(root.left, name);
+            }
+
+            return searchRec(root.right, name);
+        }
+    }
 
     public HomeFragment() {
         // Required empty public constructor
@@ -108,16 +162,16 @@ public class HomeFragment extends Fragment {
 
         linearLayout = root.findViewById(R.id.home_layout);
         linearLayout.setVisibility(View.GONE);
-        ImageSlider imageSlider = root.findViewById(R.id.image_slider);
+        //ImageSlider imageSlider = root.findViewById(R.id.image_slider);
         List<SlideModel> slideModels = new ArrayList<>();
-        slideModels.add(new SlideModel(R.drawable.banner1, "Itens com Descontos", ScaleTypes.CENTER_CROP));
-        slideModels.add(new SlideModel(R.drawable.banner2, "Desconto em Perfumes", ScaleTypes.CENTER_CROP));
-        slideModels.add(new SlideModel(R.drawable.banner3, "70% OFF", ScaleTypes.CENTER_CROP));
+        //slideModels.add(new SlideModel(R.drawable.banner1, "Itens com Descontos", ScaleTypes.CENTER_CROP));
+        //slideModels.add(new SlideModel(R.drawable.banner2, "Desconto em Perfumes", ScaleTypes.CENTER_CROP));
+        //slideModels.add(new SlideModel(R.drawable.banner3, "70% OFF", ScaleTypes.CENTER_CROP));
 
-        imageSlider.setImageList(slideModels);
+       // imageSlider.setImageList(slideModels);
 
         progressDialog.setTitle("Bem-vindo a minha farmácia");
-        progressDialog.setMessage("please wait...");
+        progressDialog.setMessage("Aguarde, Por favor...");
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
 
@@ -188,38 +242,42 @@ public class HomeFragment extends Fragment {
         search_box = root.findViewById(R.id.search_box);
         showAllModelList = new ArrayList<>();
         showAllAdapter = new ShowAllAdapter(getContext(), showAllModelList);
+
         recyclerViewSearch.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerViewSearch.setAdapter(showAllAdapter);
         recyclerViewSearch.setHasFixedSize(true);
-        search_box.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
+       search_box.addTextChangedListener(new TextWatcher() {
+           @Override
+           public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+           }
 
-            }
+           @Override
+           public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-            @Override
-            public void afterTextChanged(Editable s) {
+           }
 
-                if (s.toString().isEmpty()) {
+           @Override
+           public void afterTextChanged(Editable s) {
+                if(s.toString().isEmpty()){
                     showAllModelList.clear();
                     showAllAdapter.notifyDataSetChanged();
-                } else {
+                }else{
                     searchProduct(s.toString());
+
                 }
-            }
-        });
+           }
+       });
 
         return root;
     }
 
-    private void searchProduct(String type) {
-        if (!type.isEmpty()) {
-            db.collection("AllProducts").whereEqualTo("type", type).get()
+    private void searchProduct(String name) {
+        if (!name.isEmpty()) {
+            db.collection("VerTodos")
+                    .whereEqualTo("name", name)
+                    .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -231,9 +289,57 @@ public class HomeFragment extends Fragment {
                                     showAllModelList.add(showAllModel);
                                     showAllAdapter.notifyDataSetChanged();
                                 }
+
                             }
                         }
                     });
+        } else {
+            showAllModelList.clear();
+            showAllAdapter.notifyDataSetChanged();
+        }
+
+    }
+    private void sortShowAllModels(List<ShowAllModel> list) {
+        mergeSort(list);
+    }
+
+    // Algoritmo de ordenação merge sort
+    private void mergeSort(List<ShowAllModel> list) {
+        if (list.size() <= 1) {
+            return;
+        }
+
+        int middle = list.size() / 2;
+        List<ShowAllModel> left = list.subList(0, middle);
+        List<ShowAllModel> right = list.subList(middle, list.size());
+
+        mergeSort(left);
+        mergeSort(right);
+
+        merge(list, left, right);
+    }
+
+    // Fusão de duas listas para ordenação
+    private void merge(List<ShowAllModel> list, List<ShowAllModel> left, List<ShowAllModel> right) {
+        int i = 0, j = 0, k = 0;
+
+        while (i < left.size() && j < right.size()) {
+            if (left.get(i).getName().compareTo(right.get(j).getName()) < 0) {
+                list.set(k++, left.get(i++));
+            } else {
+                list.set(k++, right.get(j++));
+            }
+        }
+
+        while (i < left.size()) {
+            list.set(k++, left.get(i++));
+        }
+
+        while (j < right.size()) {
+            list.set(k++, right.get(j++));
         }
     }
 }
+
+
+

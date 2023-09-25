@@ -6,13 +6,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.HomeFragment">
 
-
-
     <LinearLayout
         android:id="@+id/home_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
 
         <EditText
             android:id="@+id/search_box"
@@ -21,28 +20,19 @@
             android:layout_margin="8dp"
             android:drawableLeft="@drawable/baseline_search_24"
             android:drawablePadding="5dp"
+            android:hint="pesquisa"
             android:elevation="3dp"
-            android:hint="Pesquisa"
-            android:minHeight="48dp"
-            android:padding="13dp" />
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/search_rec"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
+            android:padding="13dp"
+
             />
 
-
-
-
-        <com.denzcoskun.imageslider.ImageSlider
-            android:id="@+id/image_slider"
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:iss_auto_cycle="true"
-            app:iss_delay="0"
-            app:iss_period="1000" />
+            android:layout_height="wrap_content"
+            android:id="@+id/search_rec"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -88,7 +78,6 @@
             android:layout_marginTop="10dp"
             android:elevation="6dp"
             app:cardCornerRadius="5dp">
-
 
             <LinearLayout
                 android:layout_width="match_parent"
