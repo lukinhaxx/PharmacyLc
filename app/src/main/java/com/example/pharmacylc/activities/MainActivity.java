@@ -18,6 +18,7 @@ import com.example.pharmacylc.fragments.PerfilFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.messaging.FirebaseMessaging;
 
@@ -40,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24);
-
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
 
         homeFragment = new HomeFragment();
         perfilFragment = new PerfilFragment();
@@ -85,21 +86,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, CarrinhoActivity.class));
         }
         return true;
-    }
-
-
-    void getFCMToken() {
-        FirebaseMessaging.getInstance().subscribeToTopic("web_app")
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        String msg = "Done";
-                        if (!task.isSuccessful()) {
-                            msg = "Failed";
-                        }
-
-                    }
-                });
     }
 
 
