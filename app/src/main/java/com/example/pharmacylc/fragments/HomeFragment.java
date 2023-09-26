@@ -21,7 +21,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.pharmacylc.R;
 import com.example.pharmacylc.activities.ShowAllActivity;
 import com.example.pharmacylc.adapters.CategoryAdapter;
