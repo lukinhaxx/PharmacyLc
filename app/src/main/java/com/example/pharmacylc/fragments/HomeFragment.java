@@ -162,13 +162,10 @@ public class HomeFragment extends Fragment {
 
         linearLayout = root.findViewById(R.id.home_layout);
         linearLayout.setVisibility(View.GONE);
-        //ImageSlider imageSlider = root.findViewById(R.id.image_slider);
-        List<SlideModel> slideModels = new ArrayList<>();
-        //slideModels.add(new SlideModel(R.drawable.banner1, "Itens com Descontos", ScaleTypes.CENTER_CROP));
-        //slideModels.add(new SlideModel(R.drawable.banner2, "Desconto em Perfumes", ScaleTypes.CENTER_CROP));
-        //slideModels.add(new SlideModel(R.drawable.banner3, "70% OFF", ScaleTypes.CENTER_CROP));
 
-       // imageSlider.setImageList(slideModels);
+
+
+
 
         progressDialog.setTitle("Bem-vindo a minha farmácia");
         progressDialog.setMessage("Aguarde, Por favor...");
@@ -303,7 +300,7 @@ public class HomeFragment extends Fragment {
         mergeSort(list);
     }
 
-    // Algoritmo de ordenação merge sort
+
     private void mergeSort(List<ShowAllModel> list) {
         if (list.size() <= 1) {
             return;
@@ -319,7 +316,7 @@ public class HomeFragment extends Fragment {
         merge(list, left, right);
     }
 
-    // Fusão de duas listas para ordenação
+
     private void merge(List<ShowAllModel> list, List<ShowAllModel> left, List<ShowAllModel> right) {
         int i = 0, j = 0, k = 0;
 

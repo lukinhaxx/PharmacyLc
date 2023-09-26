@@ -68,10 +68,8 @@ public class CarrinhoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(CarrinhoActivity.this, AddressActivity.class);
 
-                // Iniciar a AddressActivity
                 startActivity(intent);
 
-                // Finalizar a CarrinhoActivity (para que ela não fique na pilha de atividades)
                 finish();
             }
         });

@@ -58,7 +58,7 @@ public class NewProductsAdapter extends RecyclerView.Adapter<NewProductsAdapter.
         if (list != null) {
             return list.size();
         } else {
-            return 0; // ou qualquer outro valor padrão apropriado
+            return 0;
         }
     }
 

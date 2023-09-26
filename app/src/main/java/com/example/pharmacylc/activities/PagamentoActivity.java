@@ -55,7 +55,6 @@ public class PagamentoActivity extends AppCompatActivity {
             }
         });
 
-        //double amount = 0.0;
         amount = getIntent().getDoubleExtra("amount", 0.0);
 
         subTotal = findViewById(R.id.sub_total);
@@ -90,7 +89,6 @@ public class PagamentoActivity extends AppCompatActivity {
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, configuration);
         startService(intent);
 
-        // Inicie a atividade de pagamento
         Intent paymentIntent = new Intent(this, PaymentActivity.class);
         paymentIntent.putExtra(PaymentActivity.EXTRA_PAYMENT, payment);
         startActivityForResult(paymentIntent, PAYPAL_REQUEST_CODE);
@@ -107,7 +105,6 @@ public class PagamentoActivity extends AppCompatActivity {
                 try {
                     String paymentDetails = paymentConfirmation.toJSONObject().toString();
                     JSONObject object = new JSONObject(paymentDetails);
-                    // Faça algo com os detalhes do pagamento JSON, se necessário
                 } catch (JSONException e) {
                     Toast.makeText(this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 }
