@@ -166,8 +166,8 @@ public class HomeFragment extends Fragment {
 
 
 
-        progressDialog.setTitle("Bem-vindo a minha farmácia");
-        progressDialog.setMessage("Aguarde, Por favor...");
+        progressDialog.setTitle(getString(R.string.bem_vindo_a_minha_farm_cia));
+        progressDialog.setMessage(getString(R.string.aguarde_por_favor));
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
 
