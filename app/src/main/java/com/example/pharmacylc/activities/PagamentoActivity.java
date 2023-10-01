@@ -100,18 +100,21 @@ public class PagamentoActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == PAYPAL_REQUEST_CODE) {
-            PaymentConfirmation paymentConfirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
-            if (paymentConfirmation != null) {
-                try {
-                    String paymentDetails = paymentConfirmation.toJSONObject().toString();
-                    JSONObject object = new JSONObject(paymentDetails);
-                } catch (JSONException e) {
-                    Toast.makeText(this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            if (resultCode == Activity.RESULT_OK) {
+                PaymentConfirmation paymentConfirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
+                if (paymentConfirmation != null) {
+                    try {
+                        String paymentDetails = paymentConfirmation.toJSONObject().toString();
+                        JSONObject object = new JSONObject(paymentDetails);
+                        // Faça o que precisa com os detalhes do pagamento
+                    } catch (JSONException e) {
+                        Toast.makeText(this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(this, "Detalhes de pagamento inválidos", Toast.LENGTH_SHORT).show();
                 }
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 Toast.makeText(this, "Pagamento cancelado pelo usuário", Toast.LENGTH_SHORT).show();
-            } else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID) {
-                Toast.makeText(this, "Detalhes de pagamento inválidos", Toast.LENGTH_SHORT).show();
             }
         }
     }

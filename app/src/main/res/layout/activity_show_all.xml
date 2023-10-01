@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Todos os Items"
+        app:title="@string/todos_os_items"
         android:background="#3E4FA6"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"

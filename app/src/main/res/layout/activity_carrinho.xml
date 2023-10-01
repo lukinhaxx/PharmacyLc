@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Meu Carrinho" />
+        app:title="@string/meu_carrinho" />
 
     <TextView
         android:id="@+id/textView3"
@@ -27,7 +27,7 @@
         android:fontFamily="@font/alata"
         android:gravity="center"
         android:padding="18dp"
-        android:text="Preço Total : R$40"
+        android:text="@string/valor_total_r_40"
         android:textColor="#BCAAA4"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -56,7 +56,7 @@
         android:drawableLeft="@drawable/ic_baseline_shopping_cart_24"
         android:drawableTint="@color/white"
         android:padding="14dp"
-        android:text="Compre agora"
+        android:text="@string/compre_agora2"
         android:textAllCaps="false"
         android:textColor="#546E7A"
         android:textStyle="bold"

@@ -62,7 +62,7 @@ public class HomeFragment extends Fragment {
     private List<ShowAllModel> showAllModelList;
     private RecyclerView recyclerViewSearch;
     private ShowAllAdapter showAllAdapter;
-
+    private BinarySearchTree searchTree;
 
     class TreeNode {
         String name;

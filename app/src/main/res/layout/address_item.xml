@@ -13,7 +13,7 @@
         android:id="@+id/address_add"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Alagoas"
+        android:text="@string/alagoas"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
