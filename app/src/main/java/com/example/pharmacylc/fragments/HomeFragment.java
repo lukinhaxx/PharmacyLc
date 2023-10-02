@@ -21,6 +21,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.pharmacylc.R;
 import com.example.pharmacylc.activities.ShowAllActivity;
 import com.example.pharmacylc.adapters.CategoryAdapter;
@@ -158,6 +161,13 @@ public class HomeFragment extends Fragment {
 
         db = FirebaseFirestore.getInstance();
 
+
+        ImageSlider imageSlider = root.findViewById(R.id.image_slider);
+        List<SlideModel> slideModels = new ArrayList<>();
+        slideModels.add(new SlideModel(R.drawable.banner1, "Itens com Descontos", ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel(R.drawable.banner2, "Desconto em Perfumes", ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel(R.drawable.banner3, "70% OFF", ScaleTypes.CENTER_CROP));
+        imageSlider.setImageList(slideModels);
 
         linearLayout = root.findViewById(R.id.home_layout);
         linearLayout.setVisibility(View.GONE);

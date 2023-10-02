@@ -12,6 +12,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/image_slider"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:iss_auto_cycle="true"
+            app:iss_delay="0"
+            app:iss_period="1000" />
 
         <EditText
             android:id="@+id/search_box"
@@ -32,6 +39,8 @@
             android:id="@+id/search_rec"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp" />
+
+
 
 
         <LinearLayout
