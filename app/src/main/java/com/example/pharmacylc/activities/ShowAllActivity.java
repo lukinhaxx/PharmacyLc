@@ -2,9 +2,7 @@ package com.example.pharmacylc.activities;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -13,11 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.pharmacylc.R;
 import com.example.pharmacylc.adapters.ShowAllAdapter;
 import com.example.pharmacylc.models.ShowAllModel;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,12 +36,7 @@ public class ShowAllActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        toolbar.setNavigationOnClickListener(view -> finish());
 
         String type = getIntent().getStringExtra("type");
 
@@ -61,20 +51,17 @@ public class ShowAllActivity extends AppCompatActivity {
             firestore.collection("VerTodos")
                     .orderBy("name")
                     .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()) {
-                                showAllModelList.clear();
-                                for (DocumentSnapshot doc : task.getResult().getDocuments()) {
-                                    ShowAllModel showAllModel = doc.toObject(ShowAllModel.class);
-                                    showAllModelList.add(showAllModel);
-                                }
-
-                                mergeSort(showAllModelList);
-
-                                showAllAdapter.notifyDataSetChanged();
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            showAllModelList.clear();
+                            for (DocumentSnapshot doc : task.getResult().getDocuments()) {
+                                ShowAllModel showAllModel = doc.toObject(ShowAllModel.class);
+                                showAllModelList.add(showAllModel);
                             }
+
+                            mergeSort(showAllModelList);
+
+                            showAllAdapter.notifyDataSetChanged();
                         }
                     });
         } else {
@@ -82,21 +69,18 @@ public class ShowAllActivity extends AppCompatActivity {
                     .whereEqualTo("type", type)
                     .orderBy("name")
                     .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()) {
-                                showAllModelList.clear();
-                                for (DocumentSnapshot doc : task.getResult().getDocuments()) {
-                                    ShowAllModel showAllModel = doc.toObject(ShowAllModel.class);
-                                    showAllModelList.add(showAllModel);
-                                }
-
-                               
-                                mergeSort(showAllModelList);
-
-                                showAllAdapter.notifyDataSetChanged();
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            showAllModelList.clear();
+                            for (DocumentSnapshot doc : task.getResult().getDocuments()) {
+                                ShowAllModel showAllModel = doc.toObject(ShowAllModel.class);
+                                showAllModelList.add(showAllModel);
                             }
+
+
+                            mergeSort(showAllModelList);
+
+                            showAllAdapter.notifyDataSetChanged();
                         }
                     });
         }
