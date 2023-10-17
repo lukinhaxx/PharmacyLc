@@ -271,7 +271,7 @@ public class HomeFragment extends Fragment {
                     showAllAdapter.notifyDataSetChanged();
                 }else{
                     searchProduct(s.toString());
-
+                    sortShowAllModels(showAllModelList);
                 }
            }
        });
